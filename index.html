@@ -1,0 +1,308 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Котик у Скретчі, міні</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Nunito:wght@600;700;800&display=swap">
+<style>
+:root{--bg:#eef2f7;--panel:#fff;--ink:#1b2433;--muted:#5b6678;--line:#d5dce7;--sys:#2f6fe4;--sys-bg:#e3ecfd;--app:#e0711d;--ok:#1f9d55;--ok-bg:#ddf5e7;--bad:#d23b3b;--bad-bg:#fbe3e3;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;--body:"Nunito","Segoe UI",system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121822;--panel:#1b2330;--ink:#e9eef6;--muted:#9aa6b8;--line:#2d3848;--sys:#6f9ff5;--sys-bg:#1d2c48;--ok:#4cc985;--ok-bg:#163a27;--bad:#f07272;--bad-bg:#43191c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121822;--panel:#1b2330;--ink:#e9eef6;--muted:#9aa6b8;--line:#2d3848;--sys:#6f9ff5;--sys-bg:#1d2c48;--ok:#4cc985;--ok-bg:#163a27;--bad:#f07272;--bad-bg:#43191c;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.08rem;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+h1,h2{font-family:var(--display);line-height:1.2;margin:0;text-wrap:balance}
+h1{font-size:1.6rem}h2{font-size:1.2rem}
+p{margin:0}
+button{font:inherit;cursor:pointer;color:inherit;-webkit-tap-highlight-color:transparent}
+.top{position:sticky;top:0;z-index:3;background:var(--bg);padding:12px 16px 8px;display:grid;gap:6px}
+.top .row{display:flex;justify-content:space-between;font-weight:800;font-size:.9rem;color:var(--muted)}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f9a83a,#e0711d);transition:width .4s}
+main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:4px 16px 20px}
+.scr{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 18px;display:grid;gap:16px;animation:in .4s ease-out}
+@keyframes in{from{transform:translateX(30px);opacity:0}to{transform:none;opacity:1}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes fall{to{transform:translate(var(--dx),105vh) rotate(720deg)}}
+@keyframes floaty{50%{transform:translateY(-6px)}}
+@keyframes bob{50%{transform:translateY(-3px)}}
+@keyframes wig{50%{transform:rotate(14deg)}}
+@keyframes wag{50%{transform:rotate(-14deg)}}
+@keyframes pop2{from{transform:scale(.5)}to{transform:none}}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.shake{animation:shake .35s}
+.emo{font-size:3rem;line-height:1;text-align:center;animation:floaty 3s ease-in-out infinite}
+.tag{font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--app)}
+.def{background:var(--sys-bg);border-radius:14px;padding:14px 16px;display:grid;gap:6px}
+.btn{border:0;border-radius:14px;padding:16px;font-weight:800;font-size:1.1rem;background:var(--sys);color:#fff;width:100%}
+.opts{display:grid;gap:10px}
+.opts.four{grid-template-columns:1fr 1fr}
+.opt{border:2px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;font-weight:700;background:var(--panel)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.fb{font-weight:800}
+.field{display:grid;gap:4px;font-weight:800}
+.field input{font:inherit;font-weight:700;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink)}
+.field input:focus{outline:none;border-color:var(--sys)}
+.send{border-radius:12px;padding:12px 14px;font-weight:800;display:grid;gap:8px}
+.send.wait{background:var(--sys-bg)}.send.ok{background:var(--ok-bg);color:var(--ok)}.send.bad{background:var(--bad-bg);color:var(--bad)}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.blk{display:inline-block;padding:6px 12px;border-radius:4px;color:#fff;font-weight:800;font-size:.95rem;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18);background:#4c97ff;white-space:nowrap}
+.blk.ev{background:#ffbf00;color:#5c4300;border-radius:16px 16px 4px 4px;padding-top:9px}.blk.pen{background:#0fbd8c}.blk.mu{background:#0fbd8c}
+.blk .v{background:#fff;color:#333;border-radius:99px;padding:0 7px;margin:0 2px}
+.code{display:grid;gap:0;justify-items:start}
+.pic{display:grid;place-items:center;background:var(--bg);border-radius:14px;padding:12px}
+.pic svg{max-width:100%;height:auto}
+.walking .bodyg{animation:bob .25s ease-in-out infinite}
+.walking .leg{animation:wig .3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.walking .leg.b{animation-delay:.15s}
+.walking .tail{animation:wag .5s ease-in-out infinite;transform-box:fill-box;transform-origin:100% 0}
+.big{font-family:var(--display);font-weight:800;font-size:5rem;line-height:1;text-align:center;color:var(--sys)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;border-radius:2px;z-index:50;pointer-events:none;animation:fall linear forwards}
+.ctl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cmd{border:0;border-radius:14px;padding:10px 4px;color:#fff;font-weight:800;font-size:.85rem;display:grid;gap:2px;justify-items:center;box-shadow:inset 0 -4px 0 rgba(0,0,0,.2);line-height:1.2}
+.cmd span{font-size:1.5rem;line-height:1}
+.cmd:active{transform:translateY(2px)}
+.cmd.f{background:#4c97ff}.cmd.l{background:#2f6fe4}.cmd.r{background:#e0711d}.cmd.d{background:#0fbd8c}.cmd.u{background:#5b6678}
+.ctl2{display:grid;grid-template-columns:1fr 2fr;gap:8px}
+.undo{border:2px solid var(--line);background:var(--panel);border-radius:14px;font-weight:800;padding:12px}
+.go{border:0;border-radius:14px;background:var(--ok);color:#fff;font-weight:800;font-size:1.1rem;padding:12px}
+.go:disabled,.cmd:disabled,.undo:disabled,.key:disabled{opacity:.5}
+.prog{display:flex;flex-wrap:wrap;gap:5px;min-height:46px;background:var(--bg);border-radius:12px;padding:8px;align-content:flex-start}
+.prog .pc{border-radius:8px;color:#fff;font-weight:800;min-width:34px;height:30px;padding:0 6px;display:grid;place-items:center;font-size:.95rem;animation:pop2 .2s}
+.prog .pc.run{outline:3px solid #ffd400;outline-offset:1px}
+.prog .ph{color:var(--muted);font-weight:700;font-size:.9rem;align-self:center}
+.pcf{background:#4c97ff}.pcl{background:#2f6fe4}.pcr{background:#e0711d}.pcd{background:#0fbd8c}.pcu{background:#5b6678}
+.bmz{width:100%;max-width:300px;height:auto;display:block;margin:0 auto;border-radius:14px;border:2px solid var(--line)}
+.stepper{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:8px;align-items:stretch}
+.stepper button{border:2px solid var(--line);background:var(--panel);border-radius:14px;font-weight:800;font-size:1.2rem;padding:10px}
+.stepper .val{display:grid;place-items:center;background:#4c97ff;color:#fff;border-radius:14px;font-weight:800;font-size:.9rem;line-height:1.2;text-align:center;padding:6px}
+.stepper .val b{font-size:1.5rem;display:block}
+.piano{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px;background:#1b2433;padding:8px 8px 10px;border-radius:14px;user-select:none;-webkit-user-select:none}
+.key{position:relative;border:0;border-radius:0 0 8px 8px;background:linear-gradient(#fff 70%,#e9eef6);height:130px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 1px 8px;gap:1px;color:#1b2433;font-weight:800;font-size:.8rem;box-shadow:inset 0 -5px 0 #cfd8e6;transition:transform .08s,background .15s;touch-action:manipulation}
+.key small{font-weight:700;font-size:.68rem;color:#5b6678}
+.key i{display:block;width:70%;height:7px;border-radius:99px;margin-bottom:3px}
+.key.on{transform:translateY(3px);background:linear-gradient(#fff6c9,#ffe58a)}
+.bkey{position:absolute;top:8px;width:calc((100% - 16px)/8*.55);height:70px;background:#1b2433;border-radius:0 0 5px 5px;pointer-events:none}
+.tune{display:flex;flex-wrap:wrap;gap:5px}
+.tune span{border:2px solid var(--line);border-radius:10px;padding:5px 8px;font-weight:800;min-width:46px;text-align:center;background:var(--panel);font-size:.95rem}
+.tune span.cur{border-color:var(--sys);background:var(--sys-bg);animation:pulse 1.2s ease-in-out infinite}
+.tune span.ok{border-color:var(--ok);background:var(--ok-bg)}
+.mprog{display:grid;justify-items:start;background:var(--bg);border-radius:12px;padding:8px;min-height:44px}
+.mprog .blk{font-size:.82rem;padding:4px 8px;animation:pop2 .2s}
+.mprog .blk.run{outline:3px solid #ffd400;outline-offset:1px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 18px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><div class="row"><span>Котик у Скретчі · 5 клас</span><span id="cnt"></span></div><div class="bar"><i id="bar"></i></div></div>
+<main id="app"></main>
+<footer>Учитель: Сидорчук Н.В.</footer>
+<script>
+/* ===== НАЛАШТУВАННЯ ДЛЯ ВЧИТЕЛЯ =====
+   Адреса веб-застосунку Google Apps Script (таблиця «Тести») і назва аркуша для результатів. */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbze1NGMMujD03c8T5qd3b3QARFbema0fyC4_Ypn615L7og_-gpq0YaF-ZvbSLh3safM/exec';
+const TOKEN = '7b3f9c21e5a84d06';
+const TEST_NAME = '5 клас. Котик у Скретчі (телефон)';
+const SHEET_NAME = '5 кл Котик у Скретчі';   // новий аркуш (з'явиться сам після першого результату)
+/* =================================== */
+</script>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const el=(t,a={},h)=>{const e=document.createElement(t);for(const k in a){if(k==='class')e.className=a[k];else e.setAttribute(k,a[k]);}if(h!=null)e.innerHTML=h;return e;};
+const SV='http://www.w3.org/2000/svg';const sv=(t,a={})=>{const e=document.createElementNS(SV,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const bump=x=>{x.classList.remove('shake');void x.offsetWidth;x.classList.add('shake');};
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const tw=(ms,fn)=>new Promise(r=>{const t0=performance.now();const f=n=>{const q=Math.min(1,(n-t0)/ms);fn(q);q<1?requestAnimationFrame(f):r();};requestAnimationFrame(f);});
+function confetti(){const c=['#2f6fe4','#e0711d','#1f9d55','#8a3fd1','#ffc83d','#d23b3b'];for(let i=0;i<50;i++){const e=el('i',{class:'confetti'});e.style.left=Math.random()*100+'vw';e.style.background=c[i%6];e.style.setProperty('--dx',(Math.random()*160-80)+'px');e.style.animationDuration=(1.5+Math.random()*1.5)+'s';e.style.animationDelay=Math.random()*.3+'s';document.body.append(e);setTimeout(()=>e.remove(),3500);}}
+const BL=a=>`<div class="code">${a.map(x=>`<span class="blk ${x[1]||''}">${x[0]}</span>`).join('')}</div>`;
+const V=n=>`<span class="v">${n}</span>`;
+const CAT=`<path class="tail" d="M-19 2C-33 0-36-14-29-21" fill="none" stroke="#e8891a" stroke-width="6" stroke-linecap="round"/>
+<ellipse class="leg" cx="-12" cy="16" rx="4" ry="6" fill="#e8891a"/><ellipse class="leg b" cx="8" cy="16" rx="4" ry="6" fill="#e8891a"/>
+<g class="bodyg"><ellipse cx="-3" cy="5" rx="19" ry="12" fill="#f9a83a" stroke="#c96f10" stroke-width="2"/>
+<ellipse cx="-2" cy="9" rx="11" ry="5" fill="#ffe2b8"/>
+<path d="M9-19 11-33 20-23ZM21-23 30-32 30-17Z" fill="#f9a83a" stroke="#c96f10" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="19" cy="-11" r="13" fill="#f9a83a" stroke="#c96f10" stroke-width="2"/>
+<ellipse cx="25" cy="-5" rx="7.5" ry="5" fill="#ffe2b8"/>
+<ellipse cx="19" cy="-14" rx="3.4" ry="4.2" fill="#fff"/><circle cx="20.2" cy="-14" r="2.1" fill="#1b2433"/>
+<ellipse cx="27" cy="-14" rx="2.8" ry="3.8" fill="#fff"/><circle cx="28" cy="-14" r="1.8" fill="#1b2433"/>
+<circle cx="31.5" cy="-8" r="2" fill="#e5586a"/><path d="M27-3.5q2 2 4.5 0" fill="none" stroke="#1b2433" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M32-6h9M32-4.5l8 3" stroke="#7a4a12" stroke-width="1" stroke-linecap="round"/></g>`;
+const FISH=`<path d="M-14 0Q-2-11 12 0Q-2 11-14 0Z" fill="#4cb3f5" stroke="#1f7bb8" stroke-width="2"/><path d="M12 0 21-8V8Z" fill="#4cb3f5" stroke="#1f7bb8" stroke-width="2" stroke-linejoin="round"/><circle cx="-7" cy="-2" r="1.8" fill="#1b2433"/>`;
+const HERO=`<svg viewBox="0 0 300 180" width="300" height="180" role="img" aria-label="Котик малює квадрат"><rect width="300" height="180" rx="16" fill="#fff"/>
+<path d="M80 50H200V140H80Z" fill="none" stroke="#2f6fe4" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"><animate attributeName="stroke-dashoffset" values="100;0;0" keyTimes="0;.8;1" dur="6s" repeatCount="indefinite"/></path>
+<g class="walking"><g transform="translate(0 -17) scale(.8)">${CAT}</g><animateMotion dur="6s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear" path="M80 50H200V140H80Z"/></g>
+<g font-size="24" font-weight="800"><text x="240" y="70" fill="#0fbd8c">♪</text><text x="258" y="120" fill="#9966ff">♫</text></g></svg>`;
+const ARW={0:'⬆ Вгору',90:'➡ Вправо',180:'⬇ Вниз',270:'⬅ Вліво'};
+const NOTES=[['До',60,'#e5484d'],['Ре',62,'#f2994a'],['Мі',64,'#f2c94c'],['Фа',65,'#6fcf97'],['Соль',67,'#2fb5c9'],['Ля',69,'#4c97ff'],['Сі',71,'#9966ff'],['До',72,'#cf63cf']];
+
+/* screens */
+const S=[
+ {k:'start'},
+ {k:'info',emo:'🐱',html:`<span class="tag">Запам'ятай</span><h2>Котик у Скретчі</h2><div class="def"><p><b>Скретч</b> — середовище блочного програмування. Програму складають з блоків, як з конструктора.</p><p><b>Спрайт</b> — виконавець алгоритму у Скретчі. Спочатку це Рудий Котик.</p></div><p>Програма починається з <b>події</b>, наприклад з блока ${BL([['коли натиснуто 🏁','ev']])}</p>`},
+ {k:'q',q:'<div class="emo">🐱</div>Як у Скретчі називають виконавця алгоритму?',o:['Спрайт','Сцена','Блок'],why:'Котик, песик чи м\'ячик у Скретчі — це спрайти.'},
+ {k:'q',lbl:'З якого блока почати програму?',q:'Котик має намалювати лінію, коли натиснуть прапорець. Який блок має стояти <b>першим</b>?',o:[BL([['коли натиснуто 🏁','ev']]),BL([['перемістити на '+V(10)+' кроків']]),BL([['опустити олівець','pen']])],why:'Програма запускається подією: першим стоїть жовтий блок «коли натиснуто 🏁».'},
+ {k:'info',emo:'🔢',html:`<span class="tag">Запам'ятай</span><h2>Число в блоці — величина</h2><div class="def"><p>Число в білому віконці каже, <b>скільки</b>: скільки кроків пройти, на скільки градусів повернути.</p></div>${BL([['перемістити на '+V(50)+' кроків'],['перемістити на '+V(150)+' кроків']])}<p>Змінюєш число — змінюється дія. Другий Котик пройде втричі далі.</p>`},
+ {k:'fish',q:'Нагодуй Котика! Скільки кроків до рибки?',c:0,f:150},
+ {k:'fish',q:'Котик стоїть на 100. Скільки кроків до рибки?',c:100,f:250},
+ {k:'info',emo:'🧭',html:`<span class="tag">Запам'ятай</span><h2>Напрямки і повороти</h2><p>Напрямок у Скретчі задають числом:</p><div class="def"><p><b>0</b> — вгору ⬆, <b>90</b> — вправо ➡,<br><b>180</b> — вниз ⬇, <b>-90</b> — вліво ⬅.</p></div><p><b>поворот ↻</b> — за годинниковою стрілкою (праворуч), <b>поворот ↺</b> — проти неї (ліворуч). Поворот на 90° — чверть кола.</p>`},
+ {k:'q',lbl:'Куди дивитиметься Котик? (90, ↻ 90)',q:'Куди дивитиметься Котик?'+BL([['коли натиснуто 🏁','ev'],['повернути в напрямку '+V(90)],['поворот ↻ на '+V(90)+' градусів']]),o:[ARW[180],ARW[0],ARW[90],ARW[270]],four:1,why:'Котик дивився вправо і повернув праворуч на чверть кола: тепер дивиться вниз.'},
+ {k:'q',lbl:'Куди дивитиметься Котик? (90, ↺ 90)',q:'Куди дивитиметься Котик?'+BL([['коли натиснуто 🏁','ev'],['повернути в напрямку '+V(90)],['поворот ↺ на '+V(90)+' градусів']]),o:[ARW[0],ARW[180],ARW[90],ARW[270]],four:1,why:'Котик дивився вправо і повернув ліворуч: тепер дивиться вгору.'},
+ {k:'info',emo:'✏️',html:`<span class="tag">Котик-художник</span><h2>Тепер малюємо!</h2><p>Натискай кнопки-команди, вони з'являться в програмі. Потім натисни <b>▶ Запустити</b>. Одна клітинка = 50 кроків.</p><div class="def"><p><b>Увага!</b> На початку олівець у Котика <b>піднятий</b>. Спершу натисни <span class="blk pen">✏️ опустити олівець</span>, інакше Котик нічого не намалює.</p></div><p><span class="blk">⬆ 50</span> — перемістити на 50 кроків, <span class="blk" style="background:#e0711d">↻</span> і <span class="blk" style="background:#2f6fe4">↺</span> — поворот на 90°, <span class="blk" style="background:#5b6678">✋</span> — підняти олівець.</p>`,btn:'Поїхали! 🚀'},
+ {k:'draw',q:'Намалюй квадрат зі стороною 100 кроків',start:[1,1,1],lines:[[[1,1],[3,1],[3,3],[1,3],[1,1]]]},
+ {k:'draw',q:'Намалюй літеру Г',start:[1,4,1],lines:[[[1,4],[1,1],[3,1]]]},
+ {k:'draw',q:'Намалюй знак «=». Між рисками олівець треба підняти!',start:[1,1,1],lines:[[[1,1],[3,1]],[[1,2],[3,2]]]},
+ {k:'info',emo:'🎹',html:`<span class="tag">Котик-музикант</span><h2>Ноти — теж величини</h2><p>У блоці «грати ноту» два числа: <b>яка нота</b> і <b>скільки тактів</b> вона звучить.</p>${BL([['грати ноту '+V(60)+V(0.5)+' тактів','mu']])}<div class="def"><p>До = 60, Ре = 62, Мі = 64, Фа = 65, Соль = 67, Ля = 69, Сі = 71.</p></div>`},
+ {k:'q',lbl:'Яку ноту зіграє блок? (67)',q:'Яку ноту зіграє блок?'+BL([['грати ноту '+V(67)+V(0.5)+' тактів','mu']]),o:['Соль','До','Мі','Ля'],four:1,why:'67 — це Соль.'},
+ {k:'tune',q:'Зіграй «Блимай, блимай, зірочко»',seq:[0,0,4,4,5,5,4]},
+ {k:'q',q:'Що треба зробити, щоб Котик залишав за собою лінію?',o:['Опустити олівець','Підняти олівець','Повернути на 90 градусів'],why:'Опущений олівець малює, піднятий — ні.'},
+ {k:'q',lbl:'Що означає число 100 у «перемістити на 100 кроків»?',q:'Що означає число 100?'+BL([['перемістити на '+V(100)+' кроків']]),o:['Скільки кроків пройде Котик','Скільки разів повторити','Номер Котика'],why:'Число в блоці — величина: скільки кроків.'},
+ {k:'end'}];
+const pts={got:0,tot:0};let si=0;let cur=null;const log=[];const U={name:'',cls:'',t0:0};
+function award(v){pts.got+=v;if(cur)cur.g=v;}
+function head(){const n=S.length-1;$('#cnt').textContent=si<n?`${si+1} / ${n}`:'Готово';$('#bar').style.width=(si/n*100)+'%';}
+function nextBtn(label='Далі →'){const b=el('button',{class:'btn'},label);b.onclick=()=>{if(cur){log.push(cur);cur=null;}si++;draw();};return b;}
+function draw(){head();const app=$('#app');app.innerHTML='';const s=S[si];cur=['q','fish','draw','tune'].includes(s.k)?{t:s.lbl||(s.q||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,70),g:0}:null;const c=el('section',{class:'scr'});app.append(c);window.scrollTo({top:0});
+  if(s.k==='start'){c.append(el('div',{class:'pic'},HERO),el('h1',{},'Котик у Скретчі'),el('p',{},'Командуємо Котиком: кроки, повороти, малюнки й музика. Твій результат отримає вчитель.'));
+    const f1=el('label',{class:'field'},'Прізвище та ім\'я');const i1=el('input',{autocomplete:'off',placeholder:'Наприклад: Коваленко Марія'});i1.value=U.name;f1.append(i1);
+    const f2=el('label',{class:'field'},'Клас');const i2=el('input',{autocomplete:'off',placeholder:'Наприклад: 5-А'});i2.value=U.cls;f2.append(i2);
+    const fb=el('p',{class:'fb bad'});const b=el('button',{class:'btn'},'Почати');
+    b.onclick=()=>{const n=i1.value.trim().replace(/\s+/g,' '),k=i2.value.trim();
+      if(n.split(' ').length<2||n.length<4){fb.textContent='Напиши прізвище та ім\'я.';bump(i1);return;}
+      if(!k){fb.textContent='Напиши свій клас.';bump(i2);return;}
+      U.name=n;U.cls=k;U.t0=Date.now();log.length=0;pts.got=0;pts.tot=0;si++;draw();};
+    c.append(f1,f2,fb,b);}
+  else if(s.k==='info'){if(s.emo)c.append(el('div',{class:'emo'},s.emo));c.append(el('div',{style:'display:grid;gap:12px'},s.html),nextBtn(s.btn||'Далі →'));}
+  else if(s.k==='q'){pts.tot++;c.append(el('div',{style:'display:grid;gap:12px;font-weight:800;font-size:1.12rem'},s.q));
+    const o=el('div',{class:'opts'+(s.four?' four':'')});const fb=el('p',{class:'fb'});const nx=nextBtn();nx.hidden=true;const right=s.o[0];
+    shuffle(s.o).forEach(t=>{const b=el('button',{class:'opt'},t);b.onclick=()=>{$$('.opt',o).forEach(x=>x.disabled=true);
+      [...o.children].forEach(x=>{if(x._t===right)x.classList.add('right');});
+      if(t===right){award(1);fb.className='fb ok';fb.textContent='Правильно! '+s.why;}else{b.classList.add('wrong');bump(b);fb.className='fb bad';fb.textContent='Не зовсім. '+s.why;}
+      nx.hidden=false;};b._t=t;o.append(b);});
+    c.append(o,fb,nx);}
+  else if(s.k==='fish'){pts.tot++;buildFish(c,s);}
+  else if(s.k==='draw'){pts.tot++;buildDraw(c,s);}
+  else if(s.k==='tune'){pts.tot++;buildTune(c,s);}
+  else{const grade=Math.max(1,Math.round(pts.got/pts.tot*12));
+    c.append(el('div',{class:'emo'},grade>=10?'🏆':grade>=7?'🌟':'💪'),el('h2',{style:'text-align:center'},'Твій результат'),el('div',{class:'big'},grade),
+      el('p',{style:'text-align:center;color:var(--muted)'},`Бали: ${Math.round(pts.got*10)/10} з ${pts.tot}. ${grade>=10?'Чудово!':grade>=7?'Добре! Повтори, де були помилки.':'Спробуй ще раз уважніше.'}`));
+    const box=el('div',{class:'send wait'},'Надсилаю результат учителю…');c.append(box);
+    const b=el('button',{class:'btn'},'Пройти ще раз');b.onclick=()=>{si=0;pts.got=0;pts.tot=0;log.length=0;draw();};c.append(b);if(grade>=7)confetti();
+    report(grade,box);}
+}
+/* --- results to teacher --- */
+const LS='alg5-2-mini';
+function lsGet(){try{return JSON.parse(localStorage.getItem(LS))||{names:[],tries:[]};}catch(e){return {names:[],tries:[]};}}
+function lsSet(v){try{localStorage.setItem(LS,JSON.stringify(v));}catch(e){}}
+function device(){const u=navigator.userAgent;const os=/Android/i.test(u)?'Android':/iPhone|iPad|iPod/i.test(u)?'iOS':/Windows/i.test(u)?'Windows':/Mac OS/i.test(u)?'macOS':/CrOS/i.test(u)?'ChromeOS':/Linux/i.test(u)?'Linux':'інша ОС';
+  const br=/Edg\//.test(u)?'Edge':/OPR\//.test(u)?'Opera':/Firefox\//.test(u)?'Firefox':/Chrome\//.test(u)?'Chrome':/Safari\//.test(u)?'Safari':'інший браузер';
+  return (/Mobi|Android|iPhone/i.test(u)?'телефон':'комп’ютер')+', '+os+', '+br+', екран '+screen.width+'×'+screen.height;}
+const fmt=sec=>Math.floor(sec/60)+' хв '+String(sec%60).padStart(2,'0')+' с';
+const num=x=>String(Math.round(x*10)/10).replace('.',',');
+function report(grade,box){const sec=Math.round((Date.now()-U.t0)/1000);const who=U.name+' ('+U.cls+')';
+  const st=lsGet();const others=st.names.filter(n=>n!==who);const prev=st.tries.map(t=>t.who+': '+t.grade+' б., '+t.when);
+  const d=new Date(),pad=x=>String(x).padStart(2,'0');st.names=[...new Set(st.names.concat(who))];st.tries.push({who,grade,when:pad(d.getDate())+'.'+pad(d.getMonth()+1)+' '+pad(d.getHours())+':'+pad(d.getMinutes())});lsSet(st);
+  const payload={token:TOKEN,test:TEST_NAME,sheet:SHEET_NAME,data:{'Учень':who,'Оцінка':grade,'Бали (з 15)':num(pts.got)+' з '+pts.tot,'Час виконання':fmt(sec),
+    'Завдання':log.map((r,i)=>(i+1)+') '+num(r.g)+'/1 — '+r.t).join('\n'),'Пристрій':device(),'Інші імена на цьому пристрої':others.join('; ')||'—',
+    'Попередні спроби на пристрої':prev.length?prev.length+': '+prev.join('; '):'—','IP-адреса':''}};
+  const ipT=new Promise(r=>setTimeout(()=>r(''),3000));
+  Promise.race([fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(j=>j.ip||'').catch(()=>''),ipT]).then(ip=>{payload.data['IP-адреса']=ip||'—';send(payload,box);});}
+function send(payload,box){box.className='send wait';box.textContent='Надсилаю результат учителю…';
+  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+  .then(()=>{box.className='send ok';box.textContent='✓ Результат надіслано вчителю.';})
+  .catch(()=>{box.className='send bad';box.innerHTML='';box.append(document.createTextNode('Не вдалося надіслати. Перевір Інтернет і спробуй ще раз.'));const r=el('button',{class:'btn'},'Надіслати ще раз');r.onclick=()=>send(payload,box);box.append(r);});}
+
+/* --- fish: steps --- */
+function buildFish(c,s){let v=50,tries=0,done=false;c.append(el('h2',{},s.q));
+  const X0=30,SC=.8;const g=sv('svg',{class:'bmz',viewBox:'0 0 300 130',width:300,height:130,role:'img','aria-label':'Доріжка з лінійкою'});g.style.maxWidth='100%';c.append(g);
+  let h=`<rect width="300" height="130" fill="#fff"/><rect x="${X0-16}" y="90" width="${300*SC+40}" height="16" rx="6" fill="#e9f1e0"/>`;
+  for(let k=0;k<=300;k+=50){const x=X0+k*SC;h+=`<line x1="${x}" y1="18" x2="${x}" y2="30" stroke="#5b6678" stroke-width="2"/><text x="${x}" y="13" text-anchor="middle" font-size="11" font-weight="800" fill="#5b6678" font-family="Nunito,sans-serif">${k}</text>`;}
+  h+=`<line x1="${X0}" y1="30" x2="${X0+300*SC}" y2="30" stroke="#5b6678" stroke-width="2"/><line x1="${X0+s.f*SC}" y1="30" x2="${X0+s.f*SC}" y2="88" stroke="#4cb3f5" stroke-width="2" stroke-dasharray="4 4"/>`;
+  h+=`<g id="fsh" transform="translate(${X0+s.f*SC+34} 96) scale(.85)">${FISH}</g><g id="fcat"><g transform="scale(.7)">${CAT}</g></g>`;g.innerHTML=h;
+  const cat=$('#fcat',g);const place=k=>cat.setAttribute('transform',`translate(${X0+k*SC} 88)`);place(s.c);
+  const blk=el('div',{},BL([['перемістити на '+V(v)+' кроків']]));
+  const stp=el('div',{class:'stepper'});const mn=el('button',{},'− 50');const val=el('div',{class:'val'});const pl=el('button',{},'+ 50');stp.append(mn,val,pl);
+  const upd=()=>{val.innerHTML=`<span>кроків<b>${v}</b></span>`;blk.innerHTML=BL([['перемістити на '+V(v)+' кроків']]);};upd();
+  mn.onclick=()=>{if(v>0){v-=50;upd();}};pl.onclick=()=>{if(v<300){v+=50;upd();}};
+  const go=el('button',{class:'go'},'▶ Запустити');const fb=el('p',{class:'fb'});const nx=nextBtn();nx.hidden=true;
+  go.onclick=async()=>{go.disabled=true;mn.disabled=pl.disabled=true;tries++;place(s.c);fb.textContent='';const end=Math.min(310,s.c+v);
+    cat.classList.add('walking');await tw(Math.max(300,v*8),q=>place(s.c+(end-s.c)*q));cat.classList.remove('walking');go.disabled=mn.disabled=pl.disabled=false;
+    if(s.c+v===s.f){if(!done){done=true;award(tries===1?1:.5);}$('#fsh',g).style.opacity=0;confetti();fb.className='fb ok';fb.textContent=`Ням! Рівно ${v} кроків.`;nx.hidden=false;}
+    else{bump(c);fb.className='fb bad';fb.textContent=s.c+v<s.f?`Не дійшов: ще ${s.f-s.c-v} кроків. Збільш число.`:`Пробіг рибку на ${s.c+v-s.f} кроків. Зменш число.`;if(tries>=3&&!done){nx.hidden=false;nx.textContent='Пропустити →';}}};
+  c.append(blk,stp,go,fb,nx);}
+
+/* --- program strip --- */
+function programUI(c,cmds,onRun){const prog=[];const strip=el('div',{class:'prog'});const IC={};cmds.forEach(([t,,ic])=>IC[t]=ic);
+  const redraw=()=>{strip.innerHTML='';if(!prog.length)strip.append(el('span',{class:'ph'},'Тут з\'явиться твоя програма'));prog.forEach(t=>strip.append(el('span',{class:'pc pc'+t},IC[t])));};redraw();
+  const ctl=el('div',{class:'ctl'});cmds.forEach(([t,cls,ic,lab])=>{const b=el('button',{class:'cmd '+cls},`<span>${ic}</span>${lab}`);b.onclick=()=>{if(prog.length<30){prog.push(t);redraw();}};ctl.append(b);});
+  const ctl2=el('div',{class:'ctl2'});const un=el('button',{class:'undo'},'⌫ Стерти');un.onclick=()=>{prog.pop();redraw();};
+  const go=el('button',{class:'go'},'▶ Запустити');ctl2.append(un,go);
+  const lock=v=>[...ctl.children,un,go].forEach(b=>b.disabled=v);
+  go.onclick=async()=>{if(!prog.length)return;lock(true);await onRun(prog,[...strip.children]);lock(false);};
+  c.append(el('div',{style:'font-weight:800'},'Моя програма:'),strip,ctl,ctl2);}
+
+/* --- cat draws --- */
+const DX=[0,1,0,-1],DY=[-1,0,1,0];
+function buildDraw(c,s){const C=50;let tries=0,done=false;c.append(el('h2',{},s.q));
+  const g=sv('svg',{class:'bmz',viewBox:'0 0 250 250',width:250,height:250,role:'img','aria-label':'Сцена Котика'});c.append(g);
+  const key=(a,b)=>[a.join(','),b.join(',')].sort().join('|');
+  const target=new Set();s.lines.forEach(pl=>{for(let i=0;i<pl.length-1;i++){const [a,b]=[pl[i],pl[i+1]];const n=Math.abs(b[0]-a[0])+Math.abs(b[1]-a[1]);const sx=Math.sign(b[0]-a[0]),sy=Math.sign(b[1]-a[1]);for(let k=0;k<n;k++)target.add(key([a[0]+sx*k,a[1]+sy*k],[a[0]+sx*(k+1),a[1]+sy*(k+1)]));}});
+  let tt,ink;const put=(x,y,a)=>tt.setAttribute('transform',`translate(${x} ${y}) rotate(${a-90})`);
+  const paint=()=>{g.innerHTML='';g.append(sv('rect',{width:250,height:250,fill:'#fff'}));
+    for(let i=0;i<5;i++){const v=i*C+25;g.append(sv('line',{x1:v,y1:0,x2:v,y2:250,stroke:'#e6ebf2','stroke-width':2}));g.append(sv('line',{x1:0,y1:v,x2:250,y2:v,stroke:'#e6ebf2','stroke-width':2}));}
+    s.lines.forEach(pl=>g.append(sv('polyline',{points:pl.map(([x,y])=>`${x*C+25},${y*C+25}`).join(' '),fill:'none',stroke:'#9aa6b8','stroke-width':5,'stroke-dasharray':'8 8','stroke-linecap':'round','stroke-linejoin':'round'})));
+    ink=sv('g',{});g.append(ink);tt=sv('g',{});tt.innerHTML=`<g transform="scale(.72)">${CAT}</g>`;
+    g.append(tt);const [sx,sy,sd]=s.start;put(sx*C+25,sy*C+25,sd*90);};
+  paint();
+  const fb=el('p',{class:'fb'});const nx=nextBtn();nx.hidden=true;
+  const skip=()=>{if(tries>=3&&!done){nx.hidden=false;nx.textContent='Пропустити →';}};
+  programUI(c,[['d','d','✏️','Опустити олівець'],['f','f','⬆ 50','Перемістити'],['u','u','✋','Підняти олівець'],['l','l','↺','Поворот ліворуч'],['r','r','↻','Поворот праворуч']],async(prog,chips)=>{
+    tries++;paint();fb.textContent='';fb.className='fb';let [x,y,d]=s.start;let a=d*90,pen=false;const drawn=new Set();tt.classList.add('walking');
+    for(let k=0;k<prog.length;k++){const t=prog[k];chips[k]?.classList.add('run');
+      if(t==='f'){const nx2=x+DX[d],ny2=y+DY[d];const x0=x*C+25,y0=y*C+25;
+        if(nx2<0||ny2<0||nx2>4||ny2>4){await tw(300,q=>put(x0+DX[d]*10*Math.sin(q*Math.PI),y0+DY[d]*10*Math.sin(q*Math.PI),a));tt.classList.remove('walking');chips[k]?.classList.remove('run');fb.className='fb bad';fb.textContent=`Ой! Команда №${k+1} виводить Котика за край сцени.`;bump(c);skip();return;}
+        let ln=null;if(pen){ln=sv('line',{x1:x0,y1:y0,x2:x0,y2:y0,stroke:'#2f6fe4','stroke-width':6,'stroke-linecap':'round'});ink.append(ln);}
+        await tw(380,q=>{const cx=x0+DX[d]*C*q,cy=y0+DY[d]*C*q;if(ln){ln.setAttribute('x2',cx);ln.setAttribute('y2',cy);}put(cx,cy,a);});
+        if(pen)drawn.add(key([x,y],[nx2,ny2]));x=nx2;y=ny2;}
+      else if(t==='l'||t==='r'){const a0=a,a1=a+(t==='l'?-90:90);await tw(260,q=>put(x*C+25,y*C+25,a0+(a1-a0)*q));a=a1;d=(d+(t==='l'?3:1))%4;}
+      else{pen=t==='d';await wait(200);}
+      chips[k]?.classList.remove('run');}
+    tt.classList.remove('walking');
+    const miss=[...target].filter(e=>!drawn.has(e)).length,extra=[...drawn].filter(e=>!target.has(e)).length;
+    if(!drawn.size){fb.className='fb bad';fb.textContent='Котик нічого не намалював. Чи опущено олівець ✏️?';bump(c);}
+    else if(!miss&&!extra){if(!done){done=true;award(tries===1?1:.5);}confetti();fb.className='fb ok';fb.textContent=`Чудово! Намальовано точно. Команд: ${prog.length}.`;nx.hidden=false;}
+    else{fb.className='fb bad';fb.textContent=extra?'Лінія пішла не туди. Натисни ⌫ і виправ програму.':'Ще не все намальовано. Додай команди.';bump(c);}
+    skip();});
+  c.append(fb,nx);}
+
+/* --- music --- */
+let AC=null;
+function tone(midi,dur=.45){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();
+  const f=440*Math.pow(2,(midi-69)/12),t=AC.currentTime;const g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.35,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+dur+.35);g.connect(AC.destination);
+  [[1,'triangle',1],[2,'sine',.3],[3,'sine',.12]].forEach(([m,type,a])=>{const o=AC.createOscillator();o.type=type;o.frequency.value=f*m;const og=AC.createGain();og.gain.value=a;o.connect(og);og.connect(g);o.start(t);o.stop(t+dur+.4);});}catch(e){}}
+function buildTune(c,s){let pos=0,err=0,done=false,playing=false;c.append(el('h2',{},s.q),el('p',{style:'color:var(--muted)'},'Натискай клавіші по черзі. Кожна правильна нота додає блок у програму Котика.'));
+  const tune=el('div',{class:'tune'});const prog=el('div',{class:'mprog'});const piano=el('div',{class:'piano'});const fb=el('p',{class:'fb'});const nx=nextBtn();nx.hidden=true;
+  const keys=[];NOTES.forEach(([n,m,col],i)=>{const k=el('button',{class:'key','aria-label':n+' '+m},`<i style="background:${col}"></i>${n}<small>${m}</small>`);
+    k.onpointerdown=e=>{e.preventDefault();press(i);};k.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();press(i);}};keys.push(k);piano.append(k);});
+  [0,1,3,4,5].forEach(i=>{const b=el('span',{class:'bkey'});b.style.left=`calc(8px + (100% - 16px)/8*${i+1} - (100% - 16px)/8*.275)`;piano.append(b);});
+  const redraw=()=>{tune.innerHTML='';s.seq.forEach((ni,k)=>{const sp=el('span',{class:k<pos?'ok':k===pos?'cur':''},NOTES[ni][0]+(k===s.seq.length-1?' —':''));sp.style.borderBottom=`5px solid ${NOTES[ni][2]}`;tune.append(sp);});
+    prog.innerHTML='';prog.append(el('span',{class:'blk ev'},'коли спрайт натиснуто'));for(let k=0;k<pos;k++)prog.append(el('span',{class:'blk mu','data-k':k},'грати ноту '+V(NOTES[s.seq[k]][1])+V(k===s.seq.length-1?1:0.5)+' тактів'));};
+  async function press(i){if(playing||done)return;tone(NOTES[i][1]);keys[i].classList.add('on');setTimeout(()=>keys[i].classList.remove('on'),180);
+    if(i===s.seq[pos]){pos++;redraw();fb.textContent='';
+      if(pos===s.seq.length){done=true;award(err<=1?1:err<=3?.5:0);fb.className='fb ok';fb.textContent='Програма готова! Котик грає…';await wait(500);playing=true;
+        for(let k=0;k<s.seq.length;k++){const ni=s.seq[k];const b=$(`[data-k="${k}"]`,prog);b?.classList.add('run');keys[ni].classList.add('on');const L=k===s.seq.length-1?1:.5;tone(NOTES[ni][1],L*.8);await wait(L*700);b?.classList.remove('run');keys[ni].classList.remove('on');}
+        playing=false;confetti();fb.textContent=`Браво! 🎵 Помилок: ${err}.`;nx.hidden=false;}}
+    else{err++;bump(tune);fb.className='fb bad';fb.textContent=`Це ${NOTES[i][0]}, а потрібна ${NOTES[s.seq[pos]][0]}. Дивись на колір смужки.`;}}
+  redraw();c.append(tune,piano,el('div',{style:'font-weight:800'},'Програма Котика:'),prog,fb,nx);}
+
+window.addEventListener('beforeunload',e=>{if(U.t0&&si>0&&S[si].k!=='end'){e.preventDefault();e.returnValue='';}});
+draw();
+})();
+</script>
+</body>
+</html>
+
+</body></html>
